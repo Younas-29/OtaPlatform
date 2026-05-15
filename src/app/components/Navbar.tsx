@@ -62,16 +62,8 @@ export function Navbar() {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const isTransparent = currentPage === "home";
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isTransparent
-          ? "bg-transparent border-b border-white/10"
-          : "bg-white/96 backdrop-blur-md border-b border-slate-100 shadow-sm"
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6">
         <div
           className="flex items-center justify-between"
@@ -86,11 +78,6 @@ export function Navbar() {
               src={logoImg}
               alt="Safawell"
               className="h-9 w-auto object-contain"
-              style={{
-                filter: isTransparent
-                  ? "brightness(0) invert(1)"
-                  : "none",
-              }}
             />
           </button>
 
@@ -105,11 +92,9 @@ export function Navbar() {
                   key={label}
                   onClick={() => navigate(page)}
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                    isTransparent
-                      ? "text-white/90 hover:text-white hover:bg-white/10"
-                      : isActive
-                        ? "text-blue-700 bg-blue-50"
-                        : "text-slate-600 hover:text-blue-700 hover:bg-slate-50"
+                    isActive
+                      ? "text-blue-700 bg-blue-50"
+                      : "text-slate-600 hover:text-blue-700 hover:bg-slate-50"
                   }`}
                   style={IN}
                 >
@@ -124,11 +109,9 @@ export function Navbar() {
                   key={label}
                   onClick={() => navigate(page)}
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                    isTransparent
-                      ? "text-white/90 hover:text-white hover:bg-white/10"
-                      : currentPage === page
-                        ? "text-blue-700 bg-blue-50"
-                        : "text-slate-600 hover:text-blue-700 hover:bg-slate-50"
+                    currentPage === page
+                      ? "text-blue-700 bg-blue-50"
+                      : "text-slate-600 hover:text-blue-700 hover:bg-slate-50"
                   }`}
                   style={IN}
                 >
@@ -140,36 +123,16 @@ export function Navbar() {
           {/* Right actions */}
           <div className="flex items-center gap-2">
             {/* AI badge */}
-            <div
-              className={`hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full border cursor-default ${
-                isTransparent
-                  ? "bg-white/10 border-white/20"
-                  : "bg-cyan-50 border-cyan-200"
-              }`}
-            >
-              <Sparkles
-                size={12}
-                className={
-                  isTransparent
-                    ? "text-cyan-300"
-                    : "text-cyan-600"
-                }
-              />
-              <span
-                className={`text-xs font-semibold tracking-wide ${isTransparent ? "text-white/80" : "text-cyan-700"}`}
-                style={IN}
-              >
+            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full border cursor-default bg-cyan-50 border-cyan-200">
+              <Sparkles size={12} className="text-cyan-600" />
+              <span className="text-xs font-semibold tracking-wide text-cyan-700" style={IN}>
                 AI Search
               </span>
             </div>
 
             {/* Language */}
             <button
-              className={`hidden lg:flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-all text-sm ${
-                isTransparent
-                  ? "text-white/70 hover:text-white hover:bg-white/10"
-                  : "text-slate-500 hover:text-slate-800 hover:bg-slate-50"
-              }`}
+              className="hidden lg:flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-all text-sm text-slate-500 hover:text-slate-800 hover:bg-slate-50"
               style={IN}
             >
               <Globe size={15} /> EN <ChevronDown size={12} />
@@ -177,11 +140,7 @@ export function Navbar() {
 
             {/* Currency */}
             <button
-              className={`hidden lg:flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-all text-sm font-medium ${
-                isTransparent
-                  ? "text-white/70 hover:text-white hover:bg-white/10"
-                  : "text-slate-500 hover:text-slate-800 hover:bg-slate-50"
-              }`}
+              className="hidden lg:flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-all text-sm font-medium text-slate-500 hover:text-slate-800 hover:bg-slate-50"
               style={IN}
             >
               USD <ChevronDown size={12} />
@@ -189,14 +148,10 @@ export function Navbar() {
 
             {isLoggedIn ? (
               <div className="flex items-center gap-1.5">
-                <button className="relative p-2 rounded-xl transition-all hover:bg-white/10">
+                <button className="relative p-2 rounded-xl transition-all hover:bg-slate-50">
                   <Bell
                     size={18}
-                    className={
-                      isTransparent
-                        ? "text-white/80"
-                        : "text-slate-500"
-                    }
+                    className="text-slate-500"
                   />
                   <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-500" />
                 </button>
@@ -206,11 +161,7 @@ export function Navbar() {
                     onClick={() =>
                       setUserMenuOpen(!userMenuOpen)
                     }
-                    className={`flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border transition-all ${
-                      isTransparent
-                        ? "border-white/30 hover:bg-white/10"
-                        : "border-slate-200 hover:border-blue-200 hover:bg-blue-50/50"
-                    }`}
+                    className="flex items-center gap-2 pl-1 pr-3 py-1 rounded-full border transition-all border-slate-200 hover:border-blue-200 hover:bg-blue-50/50"
                   >
                     <div
                       className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
@@ -223,18 +174,14 @@ export function Navbar() {
                       JD
                     </div>
                     <span
-                      className={`text-sm font-medium hidden lg:block ${isTransparent ? "text-white" : "text-slate-700"}`}
+                      className="text-sm font-medium hidden lg:block text-slate-700"
                       style={IN}
                     >
                       James D.
                     </span>
                     <ChevronDown
                       size={13}
-                      className={
-                        isTransparent
-                          ? "text-white/60"
-                          : "text-slate-400"
-                      }
+                      className="text-slate-400"
                     />
                   </button>
 
@@ -316,30 +263,15 @@ export function Navbar() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => navigate("login")}
-                  className={`hidden sm:block px-4 py-2 text-sm font-medium rounded-xl transition-all ${
-                    isTransparent
-                      ? "text-white hover:bg-white/10"
-                      : "text-slate-700 hover:text-blue-700 hover:bg-blue-50"
-                  }`}
+                  className="hidden sm:block px-4 py-2 text-sm font-medium rounded-xl transition-all text-slate-700 hover:text-blue-700 hover:bg-blue-50"
                   style={IN}
                 >
                   Sign In
                 </button>
                 <button
                   onClick={() => navigate("signup")}
-                  className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all hover:opacity-90 active:scale-95 ${
-                    isTransparent
-                      ? "bg-white text-blue-700"
-                      : "text-white"
-                  }`}
-                  style={
-                    isTransparent
-                      ? { fontFamily: "'Inter', sans-serif" }
-                      : {
-                          backgroundColor: "#1B4FD8",
-                          fontFamily: "'Inter', sans-serif",
-                        }
-                  }
+                  className="px-4 py-2 text-sm font-semibold rounded-xl transition-all hover:opacity-90 active:scale-95 text-white"
+                  style={{ backgroundColor: "#1B4FD8", fontFamily: "'Inter', sans-serif" }}
                 >
                   Sign Up Free
                 </button>
@@ -352,23 +284,9 @@ export function Navbar() {
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               {mobileOpen ? (
-                <X
-                  size={20}
-                  className={
-                    isTransparent
-                      ? "text-white"
-                      : "text-slate-600"
-                  }
-                />
+                <X size={20} className="text-slate-600" />
               ) : (
-                <Menu
-                  size={20}
-                  className={
-                    isTransparent
-                      ? "text-white"
-                      : "text-slate-600"
-                  }
-                />
+                <Menu size={20} className="text-slate-600" />
               )}
             </button>
           </div>
@@ -376,7 +294,7 @@ export function Navbar() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="md:hidden border-t border-white/10 py-4 space-y-1 bg-white/95 backdrop-blur-md rounded-b-2xl shadow-lg px-2">
+          <div className="md:hidden border-t border-slate-100 py-4 space-y-1 bg-white rounded-b-2xl shadow-lg px-2">
             {[
               ...mainNavLinks,
               ...(isLoggedIn ? accountNavLinks : []),
